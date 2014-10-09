@@ -20,116 +20,101 @@ import static org.junit.Assert.fail;
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RegistrationPageTest extends Arrays{
+public class RegistrationPageTest {
 
     WebDriver driver;
-
-    static final String USERNAME = ".//*[@id='registerForm:username']";
-    static final String PASSWORD = ".//*[@id='registerForm:password']";
-    static final String CONFIRM_PASSWORD = ".//*[@id='registerForm:confirmPassword']";
-    static final String EMAIL = ".//*[@id='registerForm:email']";
-    static final String SUBMIT = ".//*[@type='submit']";
-    static final String REGISTRATION = ".//*[.='Registration']";
-    static final String REGISTRATION_PAGE_URL = "http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml";
-    static final String LOGIN_PAGE = "Login Page";
-    static final String TITLE = "Registration";
-    static final String LOGIN = ".//tr[3]/td[2]/input";
-
-    String[] userNames = new String[]{"        ","2","b","123455781","апролджа","12345@#$"};
-    String[] passwords = new String[]{"        ","@#!%^&&*","12345678","123","123456asdFGH","123#@!$%^&*","фывапрр","asdfffff"};
-    String[] emails = new String[]{"asdas.rt","asd@asd.a","asdf@qwe.12","...@...","1@1.1"};
 
     @Before
     public void navigationToRegistrationPage() {
         System.setProperty("webdriver.chrome.driver", "webdriver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://s1.web.sumdu.edu.ua:8080");
-        driver.findElement(By.xpath(REGISTRATION)).click();
+        driver.findElement(By.xpath(Paths.REGISTRATION)).click();
     }
 
     @Test
     public void a10registrationWithInvalidUserName(){
-        for(String name : userNames){
-            driver.findElement(By.xpath(USERNAME)).sendKeys(name);
-            driver.findElement(By.xpath(PASSWORD)).sendKeys(etalon[1]);
-            driver.findElement(By.xpath(CONFIRM_PASSWORD)).sendKeys(etalon[1]);
-            driver.findElement(By.xpath(EMAIL)).sendKeys(etalon[2]);
-            driver.findElement(By.xpath(SUBMIT)).click();
-            if (LOGIN_PAGE.equals(driver.getTitle())){
+        for(String name : Arrays.userNames){
+            driver.findElement(By.xpath(Paths.USERNAME)).sendKeys(name);
+            driver.findElement(By.xpath(Paths.PASSWORD)).sendKeys(Arrays.etalon[1]);
+            driver.findElement(By.xpath(Paths.CONFIRM_PASSWORD)).sendKeys(Arrays.etalon[1]);
+            driver.findElement(By.xpath(Paths.EMAIL)).sendKeys(Arrays.etalon[2]);
+            driver.findElement(By.xpath(Paths.SUBMIT)).click();
+            if (Paths.LOGIN_PAGE.equals(driver.getTitle())){
                 System.out.println("Name: " + name + " was passed");
             }
-            assertEquals(TITLE,driver.getTitle());
-            driver.get(REGISTRATION_PAGE_URL);
+            assertEquals(Paths.TITLE,driver.getTitle());
+            driver.get(Paths.REGISTRATION_PAGE_URL);
         }
     }
 
     @Test
     public void a20registrationWithInvalidPassword(){
-        for(String name : passwords){
-            driver.findElement(By.xpath(USERNAME)).sendKeys(etalon[0]);
-            driver.findElement(By.xpath(PASSWORD)).sendKeys(name);
-            driver.findElement(By.xpath(CONFIRM_PASSWORD)).sendKeys(name);
-            driver.findElement(By.xpath(EMAIL)).sendKeys(etalon[2]);
-            driver.findElement(By.xpath(SUBMIT)).click();
-            if (LOGIN_PAGE.equals(driver.getTitle())){
+        for(String name : Arrays.passwords){
+            driver.findElement(By.xpath(Paths.USERNAME)).sendKeys(Arrays.etalon[0]);
+            driver.findElement(By.xpath(Paths.PASSWORD)).sendKeys(name);
+            driver.findElement(By.xpath(Paths.CONFIRM_PASSWORD)).sendKeys(name);
+            driver.findElement(By.xpath(Paths.EMAIL)).sendKeys(Arrays.etalon[2]);
+            driver.findElement(By.xpath(Paths.SUBMIT)).click();
+            if (Paths.LOGIN_PAGE.equals(driver.getTitle())){
                 System.out.println("Password: " + name + "was passed");
             }
-            assertEquals(driver.getTitle(),TITLE);
-            driver.get(REGISTRATION_PAGE_URL);
+            assertEquals(driver.getTitle(),Paths.TITLE);
+            driver.get(Paths.REGISTRATION_PAGE_URL);
         }
     }
 
     @Test
     public void a30registrationWithInvalidRepeatPassword(){
-        for(String name : passwords){
-            driver.findElement(By.xpath(USERNAME)).sendKeys(etalon[0]);
-            driver.findElement(By.xpath(PASSWORD)).sendKeys(etalon[1]);
-            driver.findElement(By.xpath(CONFIRM_PASSWORD)).sendKeys(name);
-            driver.findElement(By.xpath(EMAIL)).sendKeys(etalon[2]);
-            driver.findElement(By.xpath(SUBMIT)).click();
-            assertEquals(driver.getTitle(),TITLE);
-            driver.get(REGISTRATION_PAGE_URL);
+        for(String name : Arrays.passwords){
+            driver.findElement(By.xpath(Paths.USERNAME)).sendKeys(Arrays.etalon[0]);
+            driver.findElement(By.xpath(Paths.PASSWORD)).sendKeys(Arrays.etalon[1]);
+            driver.findElement(By.xpath(Paths.CONFIRM_PASSWORD)).sendKeys(name);
+            driver.findElement(By.xpath(Paths.EMAIL)).sendKeys(Arrays.etalon[2]);
+            driver.findElement(By.xpath(Paths.SUBMIT)).click();
+            assertEquals(driver.getTitle(),Paths.TITLE);
+            driver.get(Paths.REGISTRATION_PAGE_URL);
         }
     }
 
     @Test
     public void a40registrationWithInvalidEmail(){
-        for(String name : emails){
-            driver.findElement(By.xpath(USERNAME)).sendKeys(etalon[0]);
-            driver.findElement(By.xpath(PASSWORD)).sendKeys(etalon[1]);
-            driver.findElement(By.xpath(CONFIRM_PASSWORD)).sendKeys(etalon[1]);
-            driver.findElement(By.xpath(EMAIL)).sendKeys(name);
-            driver.findElement(By.xpath(SUBMIT)).click();
-            if (LOGIN_PAGE.equals(driver.getTitle())){
+        for(String name : Arrays.emails){
+            driver.findElement(By.xpath(Paths.USERNAME)).sendKeys(Arrays.etalon[0]);
+            driver.findElement(By.xpath(Paths.PASSWORD)).sendKeys(Arrays.etalon[1]);
+            driver.findElement(By.xpath(Paths.CONFIRM_PASSWORD)).sendKeys(Arrays.etalon[1]);
+            driver.findElement(By.xpath(Paths.EMAIL)).sendKeys(name);
+            driver.findElement(By.xpath(Paths.SUBMIT)).click();
+            if (Paths.LOGIN_PAGE.equals(driver.getTitle())){
                 System.out.println("Email: " + name + "was passed");
             }
-            assertEquals(driver.getTitle(),TITLE);
-            driver.get(REGISTRATION_PAGE_URL);
+            assertEquals(driver.getTitle(),Paths.TITLE);
+            driver.get(Paths.REGISTRATION_PAGE_URL);
         }
     }
 
     @Test
     public void a50successRegistration(){
-        driver.findElement(By.xpath(USERNAME)).sendKeys(etalon[0]);
-        driver.findElement(By.xpath(PASSWORD)).sendKeys(etalon[1]);
-        driver.findElement(By.xpath(CONFIRM_PASSWORD)).sendKeys(etalon[1]);
-        driver.findElement(By.xpath(EMAIL)).sendKeys(etalon[2]);
-        driver.findElement(By.xpath(SUBMIT)).click();
+        driver.findElement(By.xpath(Paths.USERNAME)).sendKeys(Arrays.etalon[0]);
+        driver.findElement(By.xpath(Paths.PASSWORD)).sendKeys(Arrays.etalon[1]);
+        driver.findElement(By.xpath(Paths.CONFIRM_PASSWORD)).sendKeys(Arrays.etalon[1]);
+        driver.findElement(By.xpath(Paths.EMAIL)).sendKeys(Arrays.etalon[2]);
+        driver.findElement(By.xpath(Paths.SUBMIT)).click();
         assertEquals("Login Page",driver.getTitle());
     }
 
     @Test
     public void a60loginWithEmptyFields(){
-        driver.get(LOGIN_PAGE_URL);
-        driver.findElement(By.xpath(LOGIN)).click();
-        assertEquals(driver.getTitle(),LOGIN_PAGE);
+        driver.get(Paths.LOGIN_PAGE_URL);
+        driver.findElement(By.xpath(Paths.LOGIN)).click();
+        assertEquals(driver.getTitle(),Paths.LOGIN_PAGE);
     }
 
     @Test
     public void a70successfulLogin(){
-        driver.get(LOGIN_PAGE_URL);
-        driver.findElement(By.xpath(".//tr[1]/td[2]/input")).sendKeys(etalon[0]);
-        driver.findElement(By.xpath(".//tr[2]/td[2]/input")).sendKeys(etalon[1]);
+        driver.get(Paths.LOGIN_PAGE_URL);
+        driver.findElement(By.xpath(".//tr[1]/td[2]/input")).sendKeys(Arrays.etalon[0]);
+        driver.findElement(By.xpath(".//tr[2]/td[2]/input")).sendKeys(Arrays.etalon[1]);
         driver.findElement(By.xpath(".//tr[3]/td[2]/input")).click();
         assertEquals("Top",driver.getTitle());
     }

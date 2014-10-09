@@ -19,128 +19,88 @@ import static junit.framework.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Remove extends Basic {
 
-    static final String DELETE_ATM = "//div[@id='j_idt76:tabView:j_idt121']//input[@value='Delete']";
-    static final String DELETE_PAYBOX = "//input[@name='j_idt76:tabView:j_idt141']";
-    static final String DELETE_POSTERM = "//input[@name='j_idt76:tabView:j_idt156']";
-    static final String DELETE_DEVICE = "//input[@name='j_idt76:tabView:j_idt111']";
-    static final String DELETE_RACK = "//input[@name='j_idt76:tabView:j_idt105']";
-    static final String DELETE_ROOM = "//input[@name='j_idt76:tabView:j_idt107']";
-    static final String DELETE_FLOOR = "//input[@name='j_idt76:tabView:j_idt111']";
-    static final String DELETE_BUILDING = "//input[@name='j_idt76:tabView:j_idt107']";
-    static final String DELETE_CITY = "//input[@name='j_idt76:tabView:j_idt107']";
-    static final String DELETE_COUNTRY = "//input[@name='j_idt76:tabView:j_idt87']";
-    static final String ATM = "//div[@id='j_idt76:tabView:j_idt128']//td[@class='object_name']/input[@type='checkbox']";
-    static final String ATM_A = "//div[@id='j_idt76:tabView:j_idt128']//td[@class='object_name']/a";
-    static final String PAYBOX = "//div[@id='j_idt76:tabView:j_idt136']//td[@class='object_name']/input[@type='checkbox']";
-    static final String PAYBOX_A = "//div[@id='j_idt76:tabView:j_idt136']//td[@class='object_name']/a";
-    static final String POSTERM = "//div[@id='j_idt76:tabView:j_idt158']//td[@class='object_name']/input[@type='checkbox']";
-    static final String POSTERM_A = "//div[@id='j_idt76:tabView:j_idt158']//td[@class='object_name']/a";
-    static final String LINK = "//input[@type='checkbox']";
-    static final String LINK_A = "//td[@class='object_name']/a[@class='link']";
-    
-    public boolean checkingForObject(String s, String link, String link_a){
-        int i = 0;
-        int n = 0;
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(link)));
-        List<WebElement> elements = driver.findElements(By.xpath(link_a));
-        for (WebElement elem : elements){
-            i++;
-            String object = elem.getText();
-            if (object.equals(s)){
-                n = i;
-                break;
-            }
-        }
-        int j = 0;
-        List<WebElement> element = driver.findElements(By.xpath(link));
-        for (WebElement elem : element) {
-            j++;
-            if (j == n){
-                elem.click();
-                return true;
-            }
-        }
-        return false;
-    }
+    MethodsForSearch search = new MethodsForSearch();
+    MethodsForNavigation navigate = new MethodsForNavigation();
+    MethodsForEditing edit = new MethodsForEditing();
 
     @Test
     public void e00deletingTheAtm(){
-        navigatingToAtm();
-        String title = objectTitle(atm, newAtm);
-        boolean check = checkingForObject(title,ATM,ATM_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_ATM))).click();
+        navigate.navigatingToAtm();
+        String title = edit.objectTitle(Arrays.atm, Arrays.newAtm);
+        boolean check = search.searchObjectOnPage(title,Paths.ATM_CHECKBOX,Paths.ATM_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_ATM))).click();
         assertTrue(check);
     }
 
     @Test
     public void e01deletingThePayBox(){
-        navigatingToPayBox();
-        String title = objectTitle(payBox, newPayBox);
-        boolean check = checkingForObject(title,PAYBOX,PAYBOX_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_PAYBOX))).click();
+        navigate.navigatingToPayBox();
+        String title = edit.objectTitle(Arrays.payBox, Arrays.newPayBox);
+        boolean check = search.searchObjectOnPage(title,Paths.PAYBOX_CHECKBOX,Paths.PAYBOX_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_PAYBOX))).click();
         assertTrue(check);
     }
 
     @Test
     public void e02deletingThePosterm(){
-        navigatingToPosterm();
-        String title = objectTitle(posterm, newPosterm);
-        boolean check = checkingForObject(title,POSTERM,POSTERM_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_POSTERM))).click();
+        navigate.navigatingToPosterm();
+        String title = edit.objectTitle(Arrays.posterm, Arrays.newPosterm);
+        boolean check = search.searchObjectOnPage(title,Paths.POSTERM_CHECKBOX,Paths.POSTERM_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_POSTERM))).click();
         assertTrue(check);
     }
 
     @Test
     public void e03deletingTheDevice(){
-        navigatingToDevice();
-        String title = objectTitle(device, newDevice);
-        boolean check = checkingForObject(title,LINK,LINK_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_DEVICE))).click();
+        navigate.navigatingToDevice();
+        String title = edit.objectTitle(Arrays.device, Arrays.newDevice);
+        boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_DEVICE))).click();
         assertTrue(check);
     }
 
     @Test
     public void e04deletingTheRack(){
-        navigatingToRack();
-        String title = objectTitle(rack, newRack);
-        boolean check = checkingForObject(title,LINK,LINK_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_RACK))).click();
+        navigate.navigatingToRack();
+        String title = edit.objectTitle(Arrays.rack, Arrays.newRack);
+        boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_RACK))).click();
         assertTrue(check);
     }
 
     @Test
     public void e05deletingTheRoom(){
-        navigatingToRoom();
-        String title = objectTitle(room, newRoom);
-        boolean check = checkingForObject(title,LINK,LINK_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_ROOM))).click();
+        navigate.navigatingToRoom();
+        String title = edit.objectTitle(Arrays.room, Arrays.newRoom);
+        boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_ROOM))).click();
         assertTrue(check);
     }
 
     @Test
     public void e06deletingTheFloor(){
-        navigatingToFloor();
-        String title = "Floor#" + objectTitle(floor, newFloor);
-        boolean check = checkingForObject(title,LINK,LINK_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_FLOOR))).click();
+        navigate.navigatingToFloor();
+        String title = "Floor#" + edit.objectTitle(Arrays.floor, Arrays.newFloor);
+        boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_FLOOR))).click();
         assertTrue(check);
     }
 
     @Test
     public void e07deletingTheBuilding(){
-        navigatingToBuilding();
-        String title = objectTitle(building, newBuilding);
-        boolean check = checkingForObject(title,LINK,LINK_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_BUILDING))).click();
+        navigate.navigatingToBuilding();
+        String title = edit.objectTitle(Arrays.building, Arrays.newBuilding);
+        boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_BUILDING))).click();
         assertTrue(check);
     }
 
     @Test
     public void e08deletingTheCity(){
-        navigatingToCity();
-        String title = objectTitle(city, newCity);
-        boolean check = checkingForObject(title,LINK,LINK_A);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_CITY))).click();
+        navigate.navigatingToCity();
+        String title = edit.objectTitle(Arrays.city, Arrays.newCity);
+        boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_CITY))).click();
         assertTrue(check);
     }
 
@@ -167,7 +127,7 @@ public class Remove extends Basic {
             }
             i++;
         }
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(DELETE_COUNTRY))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.DELETE_COUNTRY))).click();
         listOfOwners = driver.findElements(By.xpath("//tr[@role='row']/td[@class='object_owner']"));
         for (WebElement element : listOfOwners) {
             if (element.getText().equals(currentUser[0])) {
