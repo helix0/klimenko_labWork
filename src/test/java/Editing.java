@@ -16,17 +16,18 @@ import static junit.framework.Assert.assertEquals;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Editing extends Basic {
 
-    MethodsForNavigation navigate = new MethodsForNavigation();
-    MethodsForEditing edit = new MethodsForEditing();
 
     @Test
     public void c00(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         assertEquals(driver.getTitle(),Arrays.country[0]);
     }
 
     @Test
     public void c10editingCountry(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PARAMETERS))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.EDIT))).click();
@@ -44,6 +45,8 @@ public class Editing extends Basic {
 
     @Test
     public void c11editingCity(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToCity();
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PARAMETERS))).click();
@@ -62,6 +65,8 @@ public class Editing extends Basic {
 
    @Test
     public void c12editingBuilding(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToBuilding();
         navigate.findAndClick(Paths.BUILDINGS,Arrays.building[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PARAMETERS))).click();
@@ -79,6 +84,8 @@ public class Editing extends Basic {
 
     @Test
     public void c13editingFloor(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToFloor();
         navigate.findAndClick(Paths.FLOORS, "Floor#" + Arrays.floor[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PARAMETERS))).click();
@@ -95,6 +102,8 @@ public class Editing extends Basic {
 
     @Test
     public void c14editingRoom(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToRoom();
         navigate.findAndClick(Paths.ROOMS, Arrays.room[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PARAMETERS))).click();
@@ -111,6 +120,8 @@ public class Editing extends Basic {
 
     @Test
     public void c15editingRack(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToRack();
         navigate.findAndClick(Paths.RACKS, Arrays.rack[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PARAMETERS))).click();
@@ -128,6 +139,8 @@ public class Editing extends Basic {
 
     @Test
     public void c16editingDevice(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToDevice();
         navigate.findAndClick(Paths.DEVICE, Arrays.device[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.EDIT))).click();
@@ -146,6 +159,8 @@ public class Editing extends Basic {
 
     @Test
     public void c17editingPosterm(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToPosterm();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.POSTERM)));
         navigate.findAndClick(Paths.POSTERM, Arrays.posterm[0]);
@@ -153,7 +168,6 @@ public class Editing extends Basic {
         edit.fillingEditingForm(Arrays.newPosterm);
         String select = driver.findElement(By.xpath(Paths.SELECTED)).getText();
         String located = driver.findElement(By.xpath("//td[@class='parameter']/input[@id='j_idt74:locatedIn']")).getAttribute("value");
-        System.out.println(located);
         driver.findElement(By.xpath(Paths.SAVE_EDITING)).click();
         String[] current = edit.checkChanges(Arrays.posterm, Arrays.newPosterm);
         String[] expected = new String[]{current[0],"POS Term",Arrays.etalon[0],null,Arrays.etalon[0],null,current[1],current[2],current[3],select,"Country: " + located};
@@ -165,6 +179,8 @@ public class Editing extends Basic {
 
     @Test
     public void c18editingPayBox(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToPayBox();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.PAYBOX)));
         navigate.findAndClick(Paths.PAYBOX, Arrays.payBox[0]);
@@ -183,6 +199,8 @@ public class Editing extends Basic {
 
     @Test
     public void c19editingAtm(){
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForEditing edit = new MethodsForEditing(driver);
         navigate.navigatingToAtm();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.ATM)));
         navigate.findAndClick(Paths.ATM, Arrays.atm[0]);

@@ -19,12 +19,11 @@ import static junit.framework.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Remove extends Basic {
 
-    MethodsForSearch search = new MethodsForSearch();
-    MethodsForNavigation navigate = new MethodsForNavigation();
-    MethodsForEditing edit = new MethodsForEditing();
-
     @Test
     public void e00deletingTheAtm(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToAtm();
         String title = edit.objectTitle(Arrays.atm, Arrays.newAtm);
         boolean check = search.searchObjectOnPage(title,Paths.ATM_CHECKBOX,Paths.ATM_A);
@@ -34,6 +33,9 @@ public class Remove extends Basic {
 
     @Test
     public void e01deletingThePayBox(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToPayBox();
         String title = edit.objectTitle(Arrays.payBox, Arrays.newPayBox);
         boolean check = search.searchObjectOnPage(title,Paths.PAYBOX_CHECKBOX,Paths.PAYBOX_A);
@@ -43,6 +45,9 @@ public class Remove extends Basic {
 
     @Test
     public void e02deletingThePosterm(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToPosterm();
         String title = edit.objectTitle(Arrays.posterm, Arrays.newPosterm);
         boolean check = search.searchObjectOnPage(title,Paths.POSTERM_CHECKBOX,Paths.POSTERM_A);
@@ -52,6 +57,9 @@ public class Remove extends Basic {
 
     @Test
     public void e03deletingTheDevice(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToDevice();
         String title = edit.objectTitle(Arrays.device, Arrays.newDevice);
         boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
@@ -61,6 +69,9 @@ public class Remove extends Basic {
 
     @Test
     public void e04deletingTheRack(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToRack();
         String title = edit.objectTitle(Arrays.rack, Arrays.newRack);
         boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
@@ -70,6 +81,9 @@ public class Remove extends Basic {
 
     @Test
     public void e05deletingTheRoom(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToRoom();
         String title = edit.objectTitle(Arrays.room, Arrays.newRoom);
         boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
@@ -79,6 +93,9 @@ public class Remove extends Basic {
 
     @Test
     public void e06deletingTheFloor(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToFloor();
         String title = "Floor#" + edit.objectTitle(Arrays.floor, Arrays.newFloor);
         boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
@@ -88,6 +105,9 @@ public class Remove extends Basic {
 
     @Test
     public void e07deletingTheBuilding(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToBuilding();
         String title = edit.objectTitle(Arrays.building, Arrays.newBuilding);
         boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);
@@ -97,6 +117,9 @@ public class Remove extends Basic {
 
     @Test
     public void e08deletingTheCity(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         navigate.navigatingToCity();
         String title = edit.objectTitle(Arrays.city, Arrays.newCity);
         boolean check = search.searchObjectOnPage(title,Paths.LINK_CHECKBOX,Paths.LINK_A);

@@ -13,7 +13,10 @@ import java.util.List;
 public class MethodsForNavigation {
 
     WebDriver driver;
-    WebDriverWait wait;
+
+    public MethodsForNavigation(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void findAndClick(String objects, String title){
         List<WebElement> count = driver.findElements(By.xpath(objects));
@@ -32,7 +35,7 @@ public class MethodsForNavigation {
         findAndClick(Paths.FLOORS, "Floor#" + Arrays.newFloor[0]);
         findAndClick(Paths.ROOMS, Arrays.newRoom[0]);
         findAndClick(Paths.RACKS, Arrays.newRack[0]);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a[text()='ATM (s)']"))).click();
+        driver.findElement(By.xpath("//li/a[text()='ATM (s)']")).click();
 
     }
 
@@ -43,7 +46,7 @@ public class MethodsForNavigation {
         findAndClick(Paths.FLOORS, "Floor#" + Arrays.newFloor[0]);
         findAndClick(Paths.ROOMS, Arrays.newRoom[0]);
         findAndClick(Paths.RACKS, Arrays.newRack[0]);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a[text()='Pay Box (s)']"))).click();
+        driver.findElement(By.xpath("//li/a[text()='Pay Box (s)']")).click();
 
     }
 
@@ -54,7 +57,7 @@ public class MethodsForNavigation {
         findAndClick(Paths.FLOORS, "Floor#" + Arrays.newFloor[0]);
         findAndClick(Paths.ROOMS, Arrays.newRoom[0]);
         findAndClick(Paths.RACKS, Arrays.newRack[0]);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a[text()='Post Terminal (s)']"))).click();
+        driver.findElement(By.xpath("//li/a[text()='Post Terminal (s)']")).click();
     }
 
     public void navigatingToDevice(){

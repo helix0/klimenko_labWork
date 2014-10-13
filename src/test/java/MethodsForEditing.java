@@ -13,7 +13,10 @@ import java.util.List;
 public class MethodsForEditing {
 
     WebDriver driver;
-    WebDriverWait wait;
+
+    public MethodsForEditing(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public String[] checkChanges(String[] oldObject, String[] newObject){
         String [] currentObject = new String[oldObject.length];
@@ -27,7 +30,6 @@ public class MethodsForEditing {
     }
 
     public void fillingEditingForm(String[] newArray){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.ROWS)));
         List<WebElement> rows = driver.findElements(By.xpath(Paths.ROWS));
         for(int i = 0; i < newArray.length; i++ ) {
             if(newArray[i] != null) {

@@ -23,12 +23,15 @@ import static junit.framework.Assert.assertEquals;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Creation extends Basic {
 
-    MethodsForCreation methods = new MethodsForCreation();
-    MethodsForNavigation navigate = new MethodsForNavigation();
+    //MethodsForCreation methods = new MethodsForCreation(driver);
+
 
     @Test
     public void b00creationOfTheCountry() {
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='table_header']//a[contains(.,'Create')]"))).click();
         driver.findElement(By.xpath(Paths.CREATE)).click();
+        System.out.println(Arrays.country[0]);
         methods.fillingCreationForm(Arrays.country);
         String currentContinent = methods.selectionFromList(1);
         driver.findElement(By.xpath(Paths.SAVE)).click();
@@ -37,8 +40,10 @@ public class Creation extends Basic {
     }
 
 
-    @Test
+  @Test
     public void b12creationOfTheCity(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'Create city')]"))).click();
         methods.fillingCreationForm(Arrays.city);
@@ -50,6 +55,8 @@ public class Creation extends Basic {
 
     @Test
     public void b13creationOfTheBuilding(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.CREATE))).click();
@@ -61,6 +68,8 @@ public class Creation extends Basic {
 
     @Test
     public void b14creationOfTheFloor(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -74,6 +83,8 @@ public class Creation extends Basic {
 
     @Test
     public void b15creationOfTheRoom(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -86,6 +97,8 @@ public class Creation extends Basic {
 
     @Test
     public void b16creationOfTheRack(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -100,6 +113,8 @@ public class Creation extends Basic {
 
     @Test
     public void b17creationOfTheDevice(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -109,13 +124,15 @@ public class Creation extends Basic {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Paths.CREATE))).click();
         methods.fillingCreationForm(Arrays.device);
         String devicePhisicalStatus = methods.selectionFromList(2);
-        methods.selectingInNewWindow();
+        selectingInNewWindow();
         driver.findElement(By.xpath(Paths.SAVE)).click();
         assertEquals(driver.getTitle(), Arrays.device[0]);
     }
 
     @Test
     public void b18creationOfThePosterm(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -126,13 +143,15 @@ public class Creation extends Basic {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='j_idt76:tabView:j_idt151']//a[contains(.,'Create')]"))).click();
         methods.fillingCreationForm(Arrays.posterm);
         String postermPhisicalStatus = methods.selectionFromList(2);
-        methods.selectingInNewWindow();
+        selectingInNewWindow();
         driver.findElement(By.xpath(Paths.SAVE)).click();
         assertEquals(driver.getTitle(), Arrays.posterm[0]);
     }
 
     @Test
     public void b19creationOfThePayBox(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -143,13 +162,15 @@ public class Creation extends Basic {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='j_idt76:tabView:j_idt136']//a[contains(.,'Create')]"))).click();
         methods.fillingCreationForm(Arrays.payBox);
         String payBoxPhisicalStatus = methods.selectionFromList(2);
-        methods.selectingInNewWindow();
+        selectingInNewWindow();
         driver.findElement(By.xpath(Paths.SAVE)).click();
         assertEquals(Arrays.payBox[0],driver.getTitle());
     }
 
     @Test
     public void b20creationOfTheAtm(){
+        MethodsForCreation methods = new MethodsForCreation(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
         navigate.findAndClick(Paths.COUNTRIES, Arrays.country[0]);
         navigate.findAndClick(Paths.CITIES, Arrays.city[0]);
         navigate.findAndClick(Paths.BUILDINGS, Arrays.building[0]);
@@ -160,9 +181,39 @@ public class Creation extends Basic {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='j_idt76:tabView:j_idt121']//a[contains(.,'Create')]"))).click();
         methods.fillingCreationForm(Arrays.atm);
         String atmPhisicalStatus = methods.selectionFromList(2);
-        methods.selectingInNewWindow();
+        selectingInNewWindow();
         driver.findElement(By.xpath(Paths.SAVE)).click();
         assertEquals(Arrays.atm[0], driver.getTitle());
     }
 
+    public void selectingInNewWindow(){
+        List<WebElement> selecting = driver.findElements(By.xpath("//div[@id='table_data']//td/a[text()='select ']"));
+        for (WebElement elem : selecting){
+            String originalWindow = driver.getWindowHandle();
+            final Set<String> oldWindowsSet = driver.getWindowHandles();
+            elem.click();
+            String newWindow = (new WebDriverWait(driver, 10))
+                    .until(new ExpectedCondition<String>() {
+                               public String apply(WebDriver driver) {
+                                   Set<String> newWindowsSet = driver.getWindowHandles();
+                                   newWindowsSet.removeAll(oldWindowsSet);
+                                   return newWindowsSet.size() > 0 ?
+                                           newWindowsSet.iterator().next() : null;
+                               }
+                           }
+                    );
+
+            driver.switchTo().window(newWindow);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a")));
+            List<WebElement> countries = driver.findElements(By.xpath("//a"));
+            for (WebElement element : countries){
+                if (element.getText().equals("Country: " + Arrays.country[0])){
+                    element.click();
+                    break;
+                }
+            }
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='OK']"))).click();
+            driver.switchTo().window(originalWindow);
+        }
+    }
 }

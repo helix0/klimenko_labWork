@@ -15,13 +15,11 @@ import static junit.framework.Assert.assertEquals;
  */
 public class Search extends Basic {
 
-    MethodsForEditing edit = new MethodsForEditing();
-    MethodsForNavigation navigate = new MethodsForNavigation();
-    MethodsForSearch search = new MethodsForSearch();
-
-
     @Test
     public void d00searchingForCountry(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(0);
         String[] current = edit.checkChanges(Arrays.country,Arrays.newCountry);
         search.fillingSearchForm(current);
@@ -33,6 +31,9 @@ public class Search extends Basic {
 
     @Test
     public void d01searchingForCity(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(1);
         String[] current = edit.checkChanges(Arrays.city,Arrays.newCity);
         search.fillingSearchForm(current);
@@ -44,6 +45,9 @@ public class Search extends Basic {
 
     @Test
     public void d02searchingForBuilding(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(2);
         String[] current = edit.checkChanges(Arrays.building, Arrays.newBuilding);
         search.fillingSearchForm(current);
@@ -55,6 +59,9 @@ public class Search extends Basic {
 
     @Test
     public void d03searchingForFloor(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(3);
         String[] curr = edit.checkChanges(Arrays.floor, Arrays.newFloor);
         String[] current = {"Floor#" + curr[0],curr[0],curr[1]};
@@ -66,6 +73,9 @@ public class Search extends Basic {
 
     @Test
     public void d04searchingForRoom(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(4);
         String[] current = edit.checkChanges(Arrays.room,Arrays.newRoom);
         search.fillingSearchForm(current);
@@ -76,6 +86,9 @@ public class Search extends Basic {
 
     @Test
     public void d05searchingForRack(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(5);
         String[] current = edit.checkChanges(Arrays.rack,Arrays.newRack);
         search.fillingSearchForm(current);
@@ -87,6 +100,9 @@ public class Search extends Basic {
 
     @Test
     public void d06searchingForDevice(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(6);
         String[] current = edit.checkChanges(Arrays.device, Arrays.newDevice);
         search.fillingSearchForm(current);
@@ -98,6 +114,9 @@ public class Search extends Basic {
 
     @Test
     public void d07searchingForPosterm(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(7);
         String[] current = edit.checkChanges(Arrays.posterm, Arrays.newPosterm);
         List<WebElement> rows = driver.findElements(By.xpath(Paths.TEXT));
@@ -113,6 +132,9 @@ public class Search extends Basic {
 
     @Test
     public void d08searchingForPaybox(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(8);
         String[] current = edit.checkChanges(Arrays.payBox, Arrays.newPayBox);
         search.fillingSearchForm(current);
@@ -124,6 +146,9 @@ public class Search extends Basic {
 
     @Test
     public void d09searchingForAtm(){
+        MethodsForEditing edit = new MethodsForEditing(driver);
+        MethodsForNavigation navigate = new MethodsForNavigation(driver);
+        MethodsForSearch search = new MethodsForSearch(driver,wait);
         search.chooseTheTypeOfSearch(9);
         String[] current = edit.checkChanges(Arrays.atm, Arrays.newAtm);
         search.fillingSearchForm(current);

@@ -16,6 +16,11 @@ public class MethodsForSearch {
     WebDriver driver;
     WebDriverWait wait;
 
+    public MethodsForSearch (WebDriver driver, WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
+    }
+
     public void chooseTheTypeOfSearch(int n){
         int i = 0;
         WebElement element = driver.findElement(By.xpath("//div[@id='navigation_toolbar']//input"));
